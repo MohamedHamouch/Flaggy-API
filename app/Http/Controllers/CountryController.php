@@ -54,14 +54,13 @@ class CountryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $country = Country::findOrFail($id);
-        return response()->json([
-            'status' => 'success',
-            'data' => $country
-        ]);
-    }
+    public function show(Country $country)
+{
+    return response()->json([
+        'status' => 'success',
+        'data' => $country
+    ]);
+}
 
     /**
      * Update the specified resource in storage.
