@@ -65,10 +65,8 @@ class CountryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Country $country)
     {
-        $country = Country::findOrFail($id);
-
         $request->validate([
             'name' => 'required|string|max:255',
             'capital' => 'required|string|max:255',
@@ -100,9 +98,8 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Country $country)
     {
-        $country = Country::findOrFail($id);
 
         // Delete flag file if exists
         if ($country->flag) {
